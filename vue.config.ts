@@ -3,7 +3,7 @@ import * as path from 'path'
 
 const vueConfig: ProjectOptions = {
   pwa: {
-    name: '',
+    name: 'AnalyseMe',
     themeColor: '',
     appleMobileWebAppCapable: '',
     workboxPluginMode: '',
@@ -21,7 +21,7 @@ const vueConfig: ProjectOptions = {
     },
   },
   devServer: {
-    port: 2137,
+    port: 7400,
     host: '',
   },
 
