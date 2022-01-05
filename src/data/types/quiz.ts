@@ -27,8 +27,8 @@ export interface _8Axes extends QuizEffects {
 
 export interface _Soulgraphy_PI extends QuizEffects {
   econ_soci: number
-  econ2_regu: number
-  econ3_prot: number
+  econ_regu: number
+  econ_prot: number
   state_glob: number
   state_peac: number
   state_fede: number
