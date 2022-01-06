@@ -1,5 +1,4 @@
-body {
-  background: #00647d;
-}
-
-$main: #566672
+@import './fonts.scss';
+@import './root.scss';
+@import './variables.scss';
+@import './notifications.scss';
