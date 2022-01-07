@@ -5,13 +5,31 @@
       <div class="analyse">Analyse</div>
       <div class="me">Me</div>
     </div>
+    <div class="links">
+      <router-link to="/">{{ $t('nav.links.quizzes') }}</router-link>
+      <a class="github" href="https://github.com/Shin-Stats">
+        <ic :icon="['fab', 'github']" />
+      </a>
+      <Locale :options="langs" />
+    </div>
   </nav>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { langs } from '@/data/locales'
+import Locale from './Locale.vue'
 
-export default defineComponent({})
+export default defineComponent({
+  components: {
+    Locale,
+  },
+  data() {
+    return {
+      langs,
+    }
+  },
+})
 </script>
 
 <style lang="scss" scoped>
@@ -23,6 +41,9 @@ nav {
   margin: 10px auto;
   padding: 10px;
   border-radius: 7px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .logo {
@@ -40,6 +61,22 @@ nav {
   }
   .me {
     color: $main;
+  }
+}
+.links {
+  display: flex;
+  align-items: center;
+  a {
+    font-size: 21px;
+    font-weight: 500;
+    transition: all 0.5s;
+    &:hover {
+      color: $main;
+    }
+  }
+  .github {
+    font-size: 27px;
+    margin: 0 10px;
   }
 }
 </style>

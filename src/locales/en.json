@@ -1,5 +1,7 @@
 {
-  "home": {
-    "desc": "WORKS"
+  "nav": {
+    "links": {
+      "quizzes": "Quizzes"
+    }
   }
 }

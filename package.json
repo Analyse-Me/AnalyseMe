@@ -11,11 +11,12 @@
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/vue-fontawesome": "^2.0.6",
+    "@fortawesome/vue-fontawesome": "^3.0.0-5",
     "@kyvg/vue3-notification": "^2.3.4",
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
