@@ -6,7 +6,7 @@
       <div class="me">Me</div>
     </div>
     <div class="links">
-      <router-link to="/">{{ $t('nav.links.quizzes') }}</router-link>
+      <router-link to="/quizzes">{{ $t('nav.links.quizzes') }}</router-link>
       <a class="github" href="https://github.com/Shin-Stats">
         <ic :icon="['fab', 'github']" />
       </a>
@@ -44,6 +44,7 @@ nav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  user-select: none;
 }
 
 .logo {

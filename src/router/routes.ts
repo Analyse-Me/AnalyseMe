@@ -1,6 +1,6 @@
 import { RouteRecordRaw } from 'vue-router'
 import Home from '@/views/Home.vue'
-import About from '@/views/About.vue'
+import Quizzes from '@/views/Quizzes.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -9,9 +9,9 @@ const routes: RouteRecordRaw[] = [
     component: Home,
   },
   {
-    path: '/about',
-    name: 'About',
-    component: About,
+    path: '/quizzes',
+    name: 'Quizzes',
+    component: Quizzes,
   },
 ]
 

@@ -3,7 +3,7 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     appLanguage:
-      localStorage.getItem('appLanguage') ||
+      localStorage.getItem('language') ||
       process.env.VUE_APP_I18N_LOCALE ||
       'en',
   },

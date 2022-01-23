@@ -28,10 +28,10 @@
   </div>
 </template>
 
-<script>
-/* eslint-disable */
+<script lang="ts">
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   props: {
     options: {
       type: Array,
@@ -52,7 +52,7 @@ export default {
     }
   },
   methods: {
-    changeLanguage(lang) {
+    changeLanguage(lang: string) {
       this.$i18n.locale = lang
       this.$store.commit('setAppLanguage', lang)
       const filter = this.options.filter(
@@ -70,7 +70,7 @@ export default {
     this.changeLanguage(this.$i18n.locale)
     this.$emit('input', this.selected)
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
@@ -86,13 +86,16 @@ export default {
 }
 
 .selected {
-  background-color: #161e21;
+  background-color: $main;
   border-radius: 6px;
   color: #e3e3e3;
   padding-left: 8px;
   cursor: pointer;
   user-select: none;
   display: flex;
+  img {
+    box-shadow: 0px 0px 3px #262626;
+  }
 }
 
 .selected.open {
