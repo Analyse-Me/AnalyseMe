@@ -7,29 +7,27 @@
     </div>
     <div class="links">
       <router-link to="/quizzes">{{ $t('nav.links.quizzes') }}</router-link>
+      <Locale :options="langs" />
       <a class="github" href="https://github.com/Shin-Stats">
         <ic :icon="['fab', 'github']" />
       </a>
-      <Locale :options="langs" />
     </div>
   </nav>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { Options, Vue } from 'vue-class-component'
 import { langs } from '@/data/locales'
 import Locale from './Locale.vue'
 
-export default defineComponent({
+@Options({
   components: {
     Locale,
   },
-  data() {
-    return {
-      langs,
-    }
-  },
 })
+export default class Navbar extends Vue {
+  langs = langs
+}
 </script>
 
 <style lang="scss" scoped>

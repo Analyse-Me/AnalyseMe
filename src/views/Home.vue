@@ -3,13 +3,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { Options, Vue } from 'vue-class-component'
 
-export default defineComponent({
+@Options({})
+export default class Home extends Vue {
   mounted() {
     document.title = 'AnalyseMe'
-  },
-})
+  }
+}
 </script>
 
 <style lang="scss" scoped>

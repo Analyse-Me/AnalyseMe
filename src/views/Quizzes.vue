@@ -1,11 +1,19 @@
 <template>
-  <div></div>
+  <div>
+    <Thumbnail />
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { Options, Vue } from 'vue-class-component'
+import Thumbnail from '@/components/Select/Thumbnail.vue'
 
-export default defineComponent({})
+@Options({
+  components: {
+    Thumbnail,
+  },
+})
+export default class Quizzes extends Vue {}
 </script>
 
 <style lang="scss" scoped>
@@ -15,6 +23,7 @@ div {
   display: flex;
   flex-direction: column;
   margin: 10px auto;
+  width: 1200px;
   max-width: 95vw;
   padding: 10px;
   border-radius: 10px;

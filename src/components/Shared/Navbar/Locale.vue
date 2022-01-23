@@ -1,10 +1,5 @@
 <template>
-  <div
-    class="custom-select"
-    :key="key"
-    :tabindex="tabindex"
-    @blur="open = false"
-  >
+  <div class="custom-select" :key="key" @blur="open = false">
     <div class="selected" :class="{ open: open }" @click="open = !open">
       <img :src="require('@/assets/icons/flags/' + selected + '.png')" />
       {{ selected.toUpperCase() }}
@@ -29,39 +24,27 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { Options, Vue } from 'vue-class-component'
+import { Prop } from 'vue-property-decorator'
 
-export default defineComponent({
-  props: {
-    options: {
-      type: Array,
-      required: true,
-    },
-    tabindex: {
-      type: Number,
-      required: false,
-      default: 0,
-    },
-  },
-  data() {
-    return {
-      selected: this.options.length > 0 ? this.options[0] : null,
-      filterOptions: this.options,
-      open: false,
-      key: 0,
-    }
-  },
-  methods: {
-    changeLanguage(lang: string) {
-      this.$i18n.locale = lang
-      this.$store.commit('setAppLanguage', lang)
-      const filter = this.options.filter(
-        (option) => option != this.$i18n.locale
-      )
-      if (filter) this.filterOptions = filter
-      this.$forceUpdate
-    },
-  },
+@Options({})
+export default class Locale extends Vue {
+  @Prop({ type: Array, required: true }) readonly options!: string[]
+  // @Prop({ type: Number, required: true, default: 0 }) readonly tabindex!: number
+
+  selected = this.options.length > 0 ? this.options[0] : null
+  filterOptions = this.options
+  open = false
+  key = 0
+
+  changeLanguage(lang: string) {
+    this.$i18n.locale = lang
+    this.$store.commit('setAppLanguage', lang)
+    const filter = this.options.filter((option) => option != this.$i18n.locale)
+    if (filter) this.filterOptions = filter
+    this.$forceUpdate
+  }
+
   mounted() {
     this.selected =
       this.options[
@@ -69,8 +52,8 @@ export default defineComponent({
       ]
     this.changeLanguage(this.$i18n.locale)
     this.$emit('input', this.selected)
-  },
-})
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -83,18 +66,20 @@ export default defineComponent({
   height: 37px;
   line-height: 37px;
   font-weight: 500;
+  margin: 0 10px;
+  z-index: 1;
 }
 
 .selected {
   background-color: $main;
   border-radius: 6px;
-  color: #e3e3e3;
   padding-left: 8px;
+  color: #e3e3e3;
   cursor: pointer;
   user-select: none;
   display: flex;
   img {
-    box-shadow: 0px 0px 3px #262626;
+    box-shadow: 0px 2px 3px #26262682;
   }
 }
 

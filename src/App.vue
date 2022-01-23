@@ -4,14 +4,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { Options, Vue } from 'vue-class-component'
 import Navbar from '@/components/Shared/Navbar/Navbar.vue'
 
-export default defineComponent({
+@Options({
   components: {
     Navbar,
   },
 })
+export default class App extends Vue {}
 </script>
 
 <style lang="scss">
