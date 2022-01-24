@@ -36,6 +36,7 @@ nav {
   width: 1600px;
   max-width: 95vw;
   background: $light;
+  color: $dark;
   margin: 10px auto;
   padding: 10px;
   border-radius: 7px;
@@ -69,6 +70,7 @@ nav {
     font-size: 21px;
     font-weight: 500;
     transition: all 0.5s;
+    color: $dark;
     &:hover {
       color: $main;
     }

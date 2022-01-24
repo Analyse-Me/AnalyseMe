@@ -1,19 +1,22 @@
 <template>
   <div>
-    <Thumbnail />
+    <Thumbnail v-for="quiz in quizzes" :key="quiz" :quiz="quiz" />
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
 import Thumbnail from '@/components/Select/Thumbnail.vue'
+import { quizzes } from '@/data/quizzes'
 
 @Options({
   components: {
     Thumbnail,
   },
 })
-export default class Quizzes extends Vue {}
+export default class Quizzes extends Vue {
+  quizzes = quizzes
+}
 </script>
 
 <style lang="scss" scoped>
