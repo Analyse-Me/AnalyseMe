@@ -3,5 +3,37 @@
     "links": {
       "quizzes": "Quizzes"
     }
+  },
+  "select": {
+    "tags": {
+      "political": "Political",
+      "economic": "Economic",
+      "philosophical": "Philosophical",
+      "psychological": "Psychological",
+      "others": "Others"
+    },
+    "quizzes": {
+      "political_compass": {
+        "desc": "The Political Compass is a test which uses responses to a set of 62 propositions to rate political ideology in a political spectrum with two axes: economic (left–right) and social (authoritarian–libertarian)."
+      },
+      "political_ideas": {
+        "desc": "One of the largest in the world, multi-vector political test showing your views on many axes, compass, matches ideology or thinkers."
+      },
+      "economic_freedom_analysis": {
+        "desc": "A political test that represents your views on the economy - the market, taxation or state intervention - and matches the school of economics."
+      },
+      "personal_freedom_analysis": {
+        "desc": "An online test of your approach to very broadly understood personal freedom."
+      },
+      "8values": {
+        "desc": "The 8values Political Quiz measures individuals' political values, including Equality, Nation, Liberty, Tradition, Markets, World, Authority, and Progress."
+      },
+      "9axes": {
+        "desc": "9Axes, based off of 8values is a political quiz that attempts to assign percentages on nine different political axes."
+      },
+      "mypolitics": {
+        "desc": "AS"
+      }
+    }
   }
 }

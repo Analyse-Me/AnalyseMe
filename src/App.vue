@@ -1,7 +1,11 @@
 <template>
-  <Navbar />
-  <router-view />
-  <Footer />
+  <main>
+    <Navbar />
+    <div class="maincontainer">
+      <router-view />
+    </div>
+    <Footer />
+  </main>
 </template>
 
 <script lang="ts">
@@ -20,4 +24,12 @@ export default class App extends Vue {}
 
 <style lang="scss">
 @import './styles/index.scss';
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  .maincontainer {
+    flex-grow: 1;
+  }
+}
 </style>

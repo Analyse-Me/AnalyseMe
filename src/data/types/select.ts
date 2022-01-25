@@ -1,16 +1,15 @@
 export interface QuizThumb {
   Title: string
-  Desc: string
   Tags: QuizTag[]
   ID: string
 }
 
 export enum QuizTagCategory {
-  POLITICAL = 'Political',
-  ECONOMIC = 'Economic',
-  PHILOSOPHICAL = 'Philosophical',
-  PSYCHOLOGICAL = 'Psychological',
-  OTHERS = 'Others',
+  POLITICAL = 'political',
+  ECONOMIC = 'economic',
+  PHILOSOPHICAL = 'philosophical',
+  PSYCHOLOGICAL = 'psychological',
+  OTHERS = 'others',
 }
 
 export interface QuizTag {

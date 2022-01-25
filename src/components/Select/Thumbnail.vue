@@ -12,7 +12,7 @@
     </div>
     <div class="content">
       <div class="title" v-html="quiz.Title" />
-      <div class="desc" v-html="quiz.Desc" />
+      <div class="desc" v-html="$t(`select.quizzes.${quiz.ID}.desc`)" />
       <div class="tags">
         <Tag v-for="tag in quiz.Tags" :key="tag" :tag="tag" />
       </div>

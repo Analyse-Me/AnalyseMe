@@ -1,4 +1,5 @@
 <template>
+  <Filter @filtered="filterQuizzes" />
   <div>
     <Thumbnail v-for="quiz in quizzes" :key="quiz" :quiz="quiz" />
   </div>
@@ -7,15 +8,20 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
 import Thumbnail from '@/components/Select/Thumbnail.vue'
+import Filter from '@/components/Select/Filter.vue'
 import { quizzes } from '@/data/quizzes'
 
 @Options({
   components: {
     Thumbnail,
+    Filter,
   },
 })
 export default class Quizzes extends Vue {
   quizzes = quizzes
+  filterQuizzes(tag: string) {
+    console.log(tag)
+  }
 }
 </script>
 
