@@ -5,7 +5,9 @@
     }
   },
   "select": {
+    "search": "Search",
     "tags": {
+      "all": "All",
       "political": "Political",
       "economic": "Economic",
       "philosophical": "Philosophical",

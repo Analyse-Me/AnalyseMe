@@ -1,6 +1,22 @@
 <template>
+  <div class="inputcont">
+    <div>Filter</div>
+    <input v-model="search" :placeholder="`${$t('select.search')} 🔍`" />
+  </div>
   <header>
-    <div v-for="tag in tags" :key="tag" @click="$emit('filtered', tag.Name)">
+    <div
+      @click="$emit('filtered-tags', ''), setActive('')"
+      :class="{ activeTag: this.activeTag == '' }"
+    >
+      <ic icon="globe-americas" />
+      <div class="name" v-html="$t(`select.tags.all`)"></div>
+    </div>
+    <div
+      v-for="(tag, index) in tags"
+      :key="index"
+      @click="$emit('filtered-tags', tag.Name), setActive(tag.Name)"
+      :class="{ activeTag: this.activeTag == tag.Name }"
+    >
       <ic :icon="tag.Icon" />
       <div class="name" v-html="$t(`select.tags.${tag.Name}`)"></div>
     </div>
@@ -9,12 +25,28 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
-// import { Prop } from 'vue-property-decorator'
+import { Watch } from 'vue-property-decorator'
 import { tags } from '@/data/quizzes'
 
-@Options({})
+@Options({
+  emits: ['filtered-tags', 'filtered-search'],
+  // watch: {
+  //   emitSearch
+  // }
+})
 export default class Null extends Vue {
   tags = tags
+  activeTag = ''
+  search = ''
+
+  @Watch('search')
+  public emitSearch() {
+    this.$emit('filtered-search', this.search)
+  }
+
+  setActive(name: string) {
+    this.activeTag != name ? (this.activeTag = name) : (this.activeTag = '')
+  }
 }
 </script>
 
@@ -39,10 +71,35 @@ header {
     svg {
       margin-right: 10px;
     }
+
     &:hover {
       cursor: pointer;
-      filter: brightness(1.3);
+      filter: brightness(1.1);
+    }
+
+    &.activeTag {
+      background-color: $main;
     }
   }
+}
+.inputcont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px auto;
+  width: 1000px;
+  > div {
+    text-transform: uppercase;
+    font-size: 31px;
+    font-weight: 700;
+    color: $dark;
+  }
+}
+input {
+  width: 300px;
+  border: 4px solid $main;
+  border-radius: 10px;
+  font-size: 17px;
+  padding: 8px;
 }
 </style>

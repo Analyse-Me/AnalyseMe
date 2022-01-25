@@ -1,6 +1,6 @@
 <template>
-  <Filter @filtered="filterQuizzes" />
-  <div>
+  <Filter @filtered-search="searchQuiz" @filtered-tags="filterTags" />
+  <div v-if="quizzes.length > 0">
     <Thumbnail v-for="quiz in quizzes" :key="quiz" :quiz="quiz" />
   </div>
 </template>
@@ -18,9 +18,29 @@ import { quizzes } from '@/data/quizzes'
   },
 })
 export default class Quizzes extends Vue {
-  quizzes = quizzes
-  filterQuizzes(tag: string) {
-    console.log(tag)
+  allQuizzes = quizzes
+  quizzes = this.allQuizzes
+  activeTag = ''
+  activeSearch = ''
+
+  filterTags(filtertag: string) {
+    this.activeTag = filtertag
+    this.filterQuizzes()
+  }
+
+  searchQuiz(text: string) {
+    this.activeSearch = text
+    this.filterQuizzes()
+  }
+
+  filterQuizzes() {
+    this.quizzes = this.allQuizzes.filter(
+      (quiz) =>
+        quiz.Title.toLowerCase().includes(this.activeSearch.toLowerCase()) &&
+        (this.activeTag
+          ? quiz.Tags.some((tag) => tag.Name == this.activeTag)
+          : 1 == 1)
+    )
   }
 }
 </script>
