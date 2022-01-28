@@ -14,7 +14,7 @@
       v-html="$t(`quiz.buttons.${button}`)"
       :key="index"
       :class="button"
-      @click="nextQuestion(2 - index)"
+      @click="nextQuestion(1 - index / 2)"
     />
     <button
       class="prev"
@@ -22,7 +22,7 @@
       v-html="$t('quiz.buttons.prev')"
     />
   </div>
-  <!-- {{ anwsers }} -->
+  {{ anwsers }}
 </template>
 
 <script lang="ts">
@@ -32,6 +32,7 @@ import axios from '@/utilities/axios'
 import { quizzes } from '@/data/quizzes'
 import { QuizThumb } from '@/data/types/select'
 import { Question, QuizEffects } from '@/data/types/questions'
+import Results from '@/data/helpers/results'
 
 @Options({})
 export default class QuizView extends Vue {
@@ -82,13 +83,7 @@ export default class QuizView extends Vue {
   }
 
   submit() {
-    const results = this.anwsers.reduce((a, b) => {
-      for (let p in a) {
-        if (b[p]) a[p] += b[p]
-      }
-      return a
-    })
-
+    const results = Results.calcRaw(this.anwsers, this.questions)
     this.$router.push(`/results/${this.$route.params.id}`)
     console.log(results)
   }

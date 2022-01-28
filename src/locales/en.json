@@ -52,7 +52,7 @@
       "prev": "Previous Question"
     }
   },
-  "notifications":{
+  "notifications": {
     "types": {
       "error": "Error!",
       "warn": "Warning!",
