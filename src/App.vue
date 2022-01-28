@@ -109,6 +109,8 @@ main {
   flex-direction: column;
   min-height: 100vh;
   .maincontainer {
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
   }
 }

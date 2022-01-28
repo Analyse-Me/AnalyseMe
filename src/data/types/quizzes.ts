@@ -1,5 +1,14 @@
 import { QuizEffects } from './questions'
 
+export type IAnalyseMeQuiz =
+  | _Compass
+  | _8Values
+  | _9Axes
+  | _Soulgraphy_PI
+  | _Soulgraphy_EFA
+  | _Soulgraphy_EFA
+  | _MyPolitics
+
 export interface _Compass extends QuizEffects {
   econ: number
   govt: number
@@ -81,7 +90,7 @@ export interface _Soulgraphy_PFA extends QuizEffects {
   eq_free: number
 }
 
-export interface MyPolitics extends QuizEffects {
+export interface _MyPolitics extends QuizEffects {
   social: number
   lesef: number
   anarchy: number

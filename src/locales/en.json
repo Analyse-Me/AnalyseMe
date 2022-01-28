@@ -37,5 +37,19 @@
         "desc": "AS"
       }
     }
+  },
+  "quiz": {
+    "common": {
+      "question": "Question",
+      "of": "of"
+    },
+    "buttons": {
+      "strongly_agree": "Strongly Agree",
+      "agree": "Agree",
+      "idontknow": "I Don't Know",
+      "disagree": "Disagree",
+      "strongly_disagree": "Strongly Disagree",
+      "prev": "Previous Question"
+    }
   }
 }
