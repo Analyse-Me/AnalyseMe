@@ -51,5 +51,20 @@
       "strongly_disagree": "Strongly Disagree",
       "prev": "Previous Question"
     }
+  },
+  "notifications":{
+    "types": {
+      "error": "Error!",
+      "warn": "Warning!",
+      "success": "Success!"
+    },
+    "content": {
+      "no_quiz": "Wrong quiz name."
+    }
+  },
+  "questions": {
+    "political_compass": {
+      "0": ""
+    }
   }
 }

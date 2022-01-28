@@ -22,7 +22,7 @@
       v-html="$t('quiz.buttons.prev')"
     />
   </div>
-  {{ anwsers }}
+  <!-- {{ anwsers }} -->
 </template>
 
 <script lang="ts">
@@ -50,19 +50,28 @@ export default class QuizView extends Vue {
 
   async mounted() {
     this.QuizData = quizzes.find((quiz) => quiz.ID == this.$route.params.id)!
-    this.questions = (
-      await axios.get(`questions/${this.$route.params.id}`)
-    ).data
+    const res = await axios.get(`questions/${this.$route.params.id}`)
+    if (res.data && res.data.length > 0) {
+      this.questions = res.data
+    } else {
+      this.$notify({
+        type: 'error',
+        title: this.$t('notifications.types.error'),
+        text: this.$t('notifications.content.no_quiz'),
+      })
+      this.$router.push('/quizzes')
+    }
   }
 
   nextQuestion(strength: number) {
-    this.currentQuestion++
     const effect = { ...this.questions[this.currentQuestion].effect }
     for (const i in effect) {
       effect[i] *= strength
     }
 
     this.anwsers.push(effect)
+    if (this.currentQuestion == this.questions.length - 1) this.submit()
+    else this.currentQuestion++
   }
 
   prevQuestion() {
@@ -70,6 +79,18 @@ export default class QuizView extends Vue {
       this.currentQuestion--
       this.anwsers.pop()
     }
+  }
+
+  submit() {
+    const results = this.anwsers.reduce((a, b) => {
+      for (let p in a) {
+        if (b[p]) a[p] += b[p]
+      }
+      return a
+    })
+
+    this.$router.push(`/results/${this.$route.params.id}`)
+    console.log(results)
   }
 }
 </script>
