@@ -22,19 +22,25 @@
       v-html="$t('quiz.buttons.prev')"
     />
   </div>
-  {{ anwsers }}
+  <div class="container" v-else>
+    <Loading />
+  </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
-
+import Loading from '@/components/Shared/Loading.vue'
 import axios from '@/utilities/axios'
 import { quizzes } from '@/data/quizzes'
 import { QuizThumb } from '@/data/types/select'
 import { Question, QuizEffects } from '@/data/types/questions'
 import Results from '@/data/helpers/results'
 
-@Options({})
+@Options({
+  components: {
+    Loading,
+  },
+})
 export default class QuizView extends Vue {
   buttons = [
     'strongly_agree',
@@ -84,8 +90,14 @@ export default class QuizView extends Vue {
 
   submit() {
     const results = Results.calcRaw(this.anwsers, this.questions)
-    this.$router.push(`/results/${this.$route.params.id}`)
-    console.log(results)
+    axios
+      .post(`/results/${this.$route.params.id}`, {
+        quiz: this.$route.params.id,
+        results,
+      })
+      .then((res) => {
+        this.$router.push(`/results/${res.data}`)
+      })
   }
 }
 </script>
@@ -97,6 +109,7 @@ export default class QuizView extends Vue {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
   align-items: center;
   flex-grow: 1;
 }

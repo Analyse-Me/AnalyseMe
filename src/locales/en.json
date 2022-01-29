@@ -62,6 +62,9 @@
       "no_quiz": "Wrong quiz name."
     }
   },
+  "loading": {
+    "wait": "Loading, please wait"
+  },
   "questions": {
     "political_compass": {
       "0": ""
