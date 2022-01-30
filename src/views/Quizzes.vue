@@ -10,6 +10,7 @@ import { Options, Vue } from 'vue-class-component'
 import Thumbnail from '@/components/Select/Thumbnail.vue'
 import Filter from '@/components/Select/Filter.vue'
 import { quizzes } from '@/data/quizzes'
+import { QuizTag } from '@/data/types/quizzes'
 
 @Options({
   components: {
@@ -38,9 +39,13 @@ export default class Quizzes extends Vue {
       (quiz) =>
         quiz.Title.toLowerCase().includes(this.activeSearch.toLowerCase()) &&
         (this.activeTag
-          ? quiz.Tags.some((tag) => tag.Name == this.activeTag)
+          ? quiz.Tags.some((tag: QuizTag) => tag.Name == this.activeTag)
           : 1 == 1)
     )
+  }
+
+  mounted() {
+    document.title = `${this.$t('nav.links.quizzes')} | AnalyseMe`
   }
 }
 </script>

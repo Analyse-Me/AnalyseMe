@@ -34,7 +34,7 @@ import { tags } from '@/data/quizzes'
   //   emitSearch
   // }
 })
-export default class Null extends Vue {
+export default class Filter extends Vue {
   tags = tags
   activeTag = ''
   search = ''

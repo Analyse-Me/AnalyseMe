@@ -1,4 +1,4 @@
-import { Question, QuizEffects } from '../types/questions'
+import { Question, QuizEffects } from '../types/quizzes'
 
 class Results {
   merge(array: QuizEffects[]): QuizEffects {
@@ -21,7 +21,7 @@ class Results {
       })
   }
   calcResult(score: number, max: number): number {
-    return Math.round((1000 * (max + score)) / (2 * max)) / 10
+    return Math.round((1000 * (max + score)) / (2 * max))
   }
   calcSimple(result: QuizEffects, max: QuizEffects): QuizEffects {
     const res = { ...result }

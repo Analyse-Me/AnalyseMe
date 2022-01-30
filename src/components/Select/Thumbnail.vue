@@ -24,14 +24,14 @@
 import { Options, Vue } from 'vue-class-component'
 import { Prop } from 'vue-property-decorator'
 import Tag from './Tag.vue'
-import { QuizThumb } from '@/data/types/select'
+import { QuizThumb } from '@/data/types/quizzes'
 
 @Options({
   components: {
     Tag,
   },
 })
-export default class Null extends Vue {
+export default class Thumbnail extends Vue {
   @Prop({ type: Object as () => QuizThumb, required: true })
   readonly quiz!: QuizThumb
 }

@@ -9,10 +9,10 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
 import { Prop } from 'vue-property-decorator'
-import { QuizTag } from '@/data/types/select'
+import { QuizTag } from '@/data/types/quizzes'
 
 @Options({})
-export default class Null extends Vue {
+export default class Tag extends Vue {
   @Prop({ type: Object as () => QuizTag, required: true })
   readonly tag!: QuizTag
 }

@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <div class="logo">
+    <div class="logo" @click="$router.push('/')">
       <div class="icon" />
       <div class="analyse">Analyse</div>
       <div class="me">Me</div>
@@ -51,6 +51,7 @@ nav {
   align-items: center;
   font-size: 30px;
   font-weight: 700;
+  cursor: pointer;
   .icon {
     height: 40px;
     width: 40px;

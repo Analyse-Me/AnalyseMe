@@ -1,4 +1,4 @@
-import { QuizTag, QuizTagCategory, QuizThumb } from './types/select'
+import { QuizTag, QuizTagCategory, QuizThumb } from './types/quizzes'
 
 export const tags: { [key: string]: QuizTag } = {
   Political: {

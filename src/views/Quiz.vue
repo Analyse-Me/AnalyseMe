@@ -32,8 +32,7 @@ import { Options, Vue } from 'vue-class-component'
 import Loading from '@/components/Shared/Loading.vue'
 import axios from '@/utilities/axios'
 import { quizzes } from '@/data/quizzes'
-import { QuizThumb } from '@/data/types/select'
-import { Question, QuizEffects } from '@/data/types/questions'
+import { QuizThumb, Question, QuizEffects } from '@/data/types/quizzes'
 import Results from '@/data/helpers/results'
 
 @Options({
@@ -68,6 +67,8 @@ export default class QuizView extends Vue {
       })
       this.$router.push('/quizzes')
     }
+
+    document.title = `${this.QuizData.Title} | AnalyseMe`
   }
 
   nextQuestion(strength: number) {

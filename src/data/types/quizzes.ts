@@ -1,4 +1,42 @@
-import { QuizEffects } from './questions'
+export interface Question<T> {
+  question: string
+  effect: QuizEffects & T
+}
+
+export interface Ideology<T> {
+  name: string
+  stats: QuizEffects & T
+}
+
+export interface Result<T> {
+  quizID: string
+  resultID: string
+  results: QuizEffects & T
+}
+
+export interface QuizThumb {
+  Title: string
+  Tags: QuizTag[]
+  ID: string
+}
+
+export enum QuizTagCategory {
+  POLITICAL = 'political',
+  ECONOMIC = 'economic',
+  PHILOSOPHICAL = 'philosophical',
+  PSYCHOLOGICAL = 'psychological',
+  OTHERS = 'others',
+}
+
+export interface QuizTag {
+  Name: QuizTagCategory
+  Icon: string
+  Color: string
+}
+
+export interface QuizEffects {
+  [key: string]: number
+}
 
 export type IAnalyseMeQuiz =
   | _Compass
