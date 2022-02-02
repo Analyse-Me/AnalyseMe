@@ -67,6 +67,9 @@ nav {
 .links {
   display: flex;
   align-items: center;
+  @media (max-width: 900px) {
+    display: none;
+  }
   a {
     font-size: 21px;
     font-weight: 500;

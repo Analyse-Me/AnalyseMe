@@ -81,7 +81,10 @@ export default class Results extends Vue {
   flex-grow: 1;
 }
 header {
-  font-size: 23px;
+  font-size: 30px;
   font-weight: 500;
+  @media (max-width: 900px) {
+    font-size: 24px;
+  }
 }
 </style>
