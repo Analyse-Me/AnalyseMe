@@ -7,7 +7,10 @@
       {{ $t('quiz.common.of') }}
       {{ questions.length }}
     </section>
-    <section class="question" v-html="questions[currentQuestion].question" />
+    <section
+      class="question"
+      v-html="$t(`questions.${QuizData.ID}.${currentQuestion + 1}`)"
+    />
 
     <button
       v-for="(button, index) in buttons"
