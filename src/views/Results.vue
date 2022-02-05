@@ -19,26 +19,28 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
+
 import axios from '@/utilities/axios'
 import { quizzes } from '@/data/quizzes'
 import { QuizThumb, Result, QuizEffects } from '@/data/types/quizzes'
-import _Compass from '@/components/Results/_Compass.vue'
-import _8Values from '@/components/Results/_8Values.vue'
-import _9Axes from '@/components/Results/_9Axes.vue'
-import _Soulgraphy_PI from '@/components/Results/_Soulgraphy_PI.vue'
-import _Soulgraphy_EFA from '@/components/Results/_Soulgraphy_EFA.vue'
-import _Soulgraphy_PFA from '@/components/Results/_Soulgraphy_PFA.vue'
-import _MyPolitics from '@/components/Results/_MyPolitics.vue'
+
+import Compass from '@/components/Results/Compass/Index.vue'
+import EightValues from '@/components/Results/8Values/Index.vue'
+import NineAxes from '@/components/Results/9Axes/Index.vue'
+import SoulgraphyPI from '@/components/Results/Soulgraphy/PI/Index.vue'
+import SoulgraphyEFA from '@/components/Results/Soulgraphy/EFA/Index.vue'
+import SoulgraphyPFA from '@/components/Results/Soulgraphy/PFA/Index.vue'
+import MyPolitics from '@/components/Results/MyPolitics/Index.vue'
 
 @Options({
   components: {
-    Compass: _Compass,
-    EightValues: _8Values,
-    NineAxes: _9Axes,
-    SoulgraphyPI: _Soulgraphy_PI,
-    SoulgraphyEFA: _Soulgraphy_EFA,
-    SoulgraphyPFA: _Soulgraphy_PFA,
-    MyPolitics: _MyPolitics,
+    Compass,
+    EightValues,
+    NineAxes,
+    SoulgraphyPI,
+    SoulgraphyEFA,
+    SoulgraphyPFA,
+    MyPolitics,
   },
 })
 export default class Results extends Vue {
