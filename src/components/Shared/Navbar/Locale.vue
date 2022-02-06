@@ -101,7 +101,7 @@ export default class Locale extends Vue {
 
 .items {
   color: #e3e3e3;
-  border-radius: 0px 0px 6px 6px;
+  border-radius: 0px 6px 6px 6px;
   overflow: hidden;
   border-right: 1px solid $main;
   border-left: 1px solid $main;
@@ -110,6 +110,11 @@ export default class Locale extends Vue {
   background-color: #314147;
   left: 0;
   right: 0;
+  width: 220px;
+  max-height: 180px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .item {
@@ -119,6 +124,8 @@ export default class Locale extends Vue {
   user-select: none;
   transition: 0.2s all;
   display: flex;
+  flex-grow: 1;
+  min-width: 100px;
 }
 
 .item:hover {

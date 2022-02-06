@@ -1,8 +1,11 @@
 export const langs: string[] = [
   'en',
   'es',
-  // 'it',
-  // 'ru',
-  // 'de',
+  'ru',
+  'de',
+  'fr',
+  'it',
   'pl',
+  'ua',
+  'no',
 ]
