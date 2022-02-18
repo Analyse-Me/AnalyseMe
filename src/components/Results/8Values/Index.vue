@@ -1,5 +1,4 @@
 <template>
-  <div>{{ results }}</div>
   <Axis
     v-for="(value, index) in results.results"
     :key="index"
