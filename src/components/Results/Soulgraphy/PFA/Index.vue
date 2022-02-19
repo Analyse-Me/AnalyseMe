@@ -8,7 +8,7 @@ import { Prop } from 'vue-property-decorator'
 import { Result, _Soulgraphy_PFA } from '@/data/types/quizzes'
 
 @Options({})
-export default class Null extends Vue {
+export default class Index extends Vue {
   @Prop({ type: Object as () => Result<_Soulgraphy_PFA>, required: true })
   readonly results!: Result<_Soulgraphy_PFA>
 }

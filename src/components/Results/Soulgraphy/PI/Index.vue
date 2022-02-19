@@ -1,5 +1,8 @@
 <template>
-  <div></div>
+  <div>
+    <AxesContainer />
+    <Analysis />
+  </div>
 </template>
 
 <script lang="ts">
@@ -8,7 +11,7 @@ import { Prop } from 'vue-property-decorator'
 import { Result, _Soulgraphy_PI } from '@/data/types/quizzes'
 
 @Options({})
-export default class Null extends Vue {
+export default class Index extends Vue {
   @Prop({ type: Object as () => Result<_Soulgraphy_PI>, required: true })
   readonly results!: Result<_Soulgraphy_PI>
 }

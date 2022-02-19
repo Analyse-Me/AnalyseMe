@@ -18,7 +18,7 @@ import { Result, _8Values } from '@/data/types/quizzes'
     Axis,
   },
 })
-export default class EightValues extends Vue {
+export default class Index extends Vue {
   @Prop({ type: Object as () => Result<_8Values>, required: true })
   readonly results!: Result<_8Values>
 }
