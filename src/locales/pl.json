@@ -59,6 +59,14 @@
         "oy": "Civil Axis",
         "oz": "Society Axis"
       }
+    },
+    "political_ideas": {
+      "sections": {
+        "econ": "Ekonomia",
+        "state": "Państwo",
+        "society": "Społeczeństwo",
+        "law": "Prawo"
+      }
     }
   },
   "notifications": {

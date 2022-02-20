@@ -84,11 +84,13 @@ section {
   max-width: 95vw;
 }
 img {
-  height: calc(50px + 1.8vw);
+  height: calc(45px + 1.4vw);
 }
 .bar {
   flex-grow: 1;
-  height: calc(30px + 1.3vw);
+  height: calc(30px + 1vw);
+  max-width: 350px;
+  margin: 0 5px;
   display: flex;
   background-color: #262626;
   justify-content: space-between;
@@ -103,8 +105,11 @@ img {
     position: absolute;
     top: 0;
     left: 0;
-    border: 3.5px solid black;
+    border: 2.5px solid black;
     border-radius: 10px;
+    @media (min-width: 900px) {
+      border: 3.5px solid black;
+    }
   }
   > div {
     font-weight: bold;
