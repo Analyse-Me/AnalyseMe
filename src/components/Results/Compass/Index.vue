@@ -1,11 +1,10 @@
 <template>
-  <Compass :results="results" />
-  <Scores :results="results" />
+  <Compass />
+  <Scores />
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
-import { Prop } from 'vue-property-decorator'
 import Compass from './Compass.vue'
 import Scores from './Scores.vue'
 import { Result, _Compass } from '@/data/types/quizzes'
@@ -15,11 +14,13 @@ import { Result, _Compass } from '@/data/types/quizzes'
     Compass,
     Scores,
   },
+  computed: {
+    results(): Result<_Compass> {
+      return this.$store.getters.getResults
+    },
+  },
 })
-export default class Index extends Vue {
-  @Prop({ type: Object as () => Result<_Compass>, required: true })
-  readonly results!: Result<_Compass>
-}
+export default class Index extends Vue {}
 </script>
 
 <style lang="scss" scoped>

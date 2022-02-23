@@ -9,7 +9,6 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
-import { Prop } from 'vue-property-decorator'
 import Axis from './Axis.vue'
 import { Result, _9Axes } from '@/data/types/quizzes'
 
@@ -17,11 +16,13 @@ import { Result, _9Axes } from '@/data/types/quizzes'
   components: {
     Axis,
   },
+  computed: {
+    results(): Result<_9Axes> {
+      return this.$store.getters.getResults
+    },
+  },
 })
-export default class Index extends Vue {
-  @Prop({ type: Object as () => Result<_9Axes>, required: true })
-  readonly results!: Result<_9Axes>
-}
+export default class Index extends Vue {}
 </script>
 
 <style lang="scss" scoped>

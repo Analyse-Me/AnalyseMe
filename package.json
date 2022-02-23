@@ -31,7 +31,8 @@
     "vue-property-decorator": "^9.1.2",
     "vue-router": "^4.0.0-0",
     "vue3-smooth-scroll": "^0.8.1",
-    "vuex": "^4.0.0-0"
+    "vuex": "^4.0.0-0",
+    "vuex-module-decorators": "^2.0.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.16.7",

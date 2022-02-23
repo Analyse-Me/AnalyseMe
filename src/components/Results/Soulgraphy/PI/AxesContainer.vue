@@ -36,8 +36,9 @@ import Axis from './Axis.vue'
   },
 })
 export default class AxesContainer extends Vue {
-  @Prop({ type: Object as () => Result<_Soulgraphy_PI>, required: true })
-  readonly results!: Result<_Soulgraphy_PI>
+  get results(): Result<_Soulgraphy_PI> {
+    return this.$store.getters.getResults
+  }
 
   res = [
     Object.keys(this.results.results).slice(0, 3),

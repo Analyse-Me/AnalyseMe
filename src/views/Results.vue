@@ -1,19 +1,13 @@
 <template>
-  <div class="container" v-if="results && QuizData.ID">
+  <div class="container" v-if="QuizData.ID">
     <header v-html="QuizData.Title" />
-    <Compass :results="results" v-if="QuizData.ID == 'political_compass'" />
-    <EightValues :results="results" v-if="QuizData.ID == '8values'" />
-    <NineAxes :results="results" v-if="QuizData.ID == '9axes'" />
-    <SoulgraphyPI :results="results" v-if="QuizData.ID == 'political_ideas'" />
-    <SoulgraphyEFA
-      :results="results"
-      v-if="QuizData.ID == 'economic_freedom_analysis'"
-    />
-    <SoulgraphyPFA
-      :results="results"
-      v-if="QuizData.ID == 'personal_freedom_analysis'"
-    />
-    <MyPolitics :results="results" v-if="QuizData.ID == 'mypolitics'" />
+    <Compass v-if="QuizData.ID == 'political_compass'" />
+    <EightValues v-if="QuizData.ID == '8values'" />
+    <NineAxes v-if="QuizData.ID == '9axes'" />
+    <SoulgraphyPI v-if="QuizData.ID == 'political_ideas'" />
+    <SoulgraphyEFA v-if="QuizData.ID == 'economic_freedom_analysis'" />
+    <SoulgraphyPFA v-if="QuizData.ID == 'personal_freedom_analysis'" />
+    <MyPolitics v-if="QuizData.ID == 'mypolitics'" />
   </div>
 </template>
 
@@ -44,7 +38,6 @@ import MyPolitics from '@/components/Results/MyPolitics/Index.vue'
   },
 })
 export default class Results extends Vue {
-  results = {} as Result<QuizEffects>
   QuizData = {} as QuizThumb
 
   mounted() {
@@ -56,7 +49,7 @@ export default class Results extends Vue {
             res.data.results[p] /= 10
           }
 
-          this.results = res.data
+          this.$store.commit('setResults', res.data)
           this.QuizData = quizzes.find((quiz) => quiz.ID == res.data.quizID)!
           document.title = `${this.QuizData.Title} | AnalyseMe`
         } else {

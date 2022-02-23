@@ -1,13 +1,13 @@
 <template>
   <article>
-    <AxesContainer :results="results" />
-    <Analysis :results="results" />
+    <AxesContainer />
+    <Analysis />
   </article>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
-import { Prop } from 'vue-property-decorator'
+
 import { Result, _Soulgraphy_PI } from '@/data/types/quizzes'
 import AxesContainer from './AxesContainer.vue'
 import Analysis from './Analysis/Analysis.vue'
@@ -17,11 +17,13 @@ import Analysis from './Analysis/Analysis.vue'
     AxesContainer,
     Analysis,
   },
+  computed: {
+    results(): Result<_Soulgraphy_PI> {
+      return this.$store.getters.getResults
+    },
+  },
 })
-export default class Index extends Vue {
-  @Prop({ type: Object as () => Result<_Soulgraphy_PI>, required: true })
-  readonly results!: Result<_Soulgraphy_PI>
-}
+export default class Index extends Vue {}
 </script>
 
 <style lang="scss" scoped>
