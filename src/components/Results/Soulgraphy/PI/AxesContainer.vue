@@ -26,7 +26,6 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
-import { Prop } from 'vue-property-decorator'
 import { Result, _Soulgraphy_PI } from '@/data/types/quizzes'
 import Axis from './Axis.vue'
 
@@ -34,19 +33,22 @@ import Axis from './Axis.vue'
   components: {
     Axis,
   },
-})
-export default class AxesContainer extends Vue {
-  get results(): Result<_Soulgraphy_PI> {
-    return this.$store.getters.getResults
-  }
+  computed: {
+    results(): Result<_Soulgraphy_PI> {
+      return this.$store.getters.getResults
+    },
 
-  res = [
-    Object.keys(this.results.results).slice(0, 3),
-    Object.keys(this.results.results).slice(3, 7),
-    Object.keys(this.results.results).slice(7, 11),
-    Object.keys(this.results.results).slice(11, 14),
-  ].map((s) => s.map((v) => [v, this.results.results[v]]))
-}
+    res() {
+      return [
+        Object.keys(this.results.results).slice(0, 3),
+        Object.keys(this.results.results).slice(3, 7),
+        Object.keys(this.results.results).slice(7, 11),
+        Object.keys(this.results.results).slice(11, 14),
+      ].map((s) => s.map((v) => [v, this.results.results[v]]))
+    },
+  },
+})
+export default class AxesContainer extends Vue {}
 </script>
 
 <style lang="scss" scoped>
