@@ -1,11 +1,10 @@
 <template>
   <section>
-    {{ results }}
     <Compass />
-    <div>
+    <article class="container ideologycont">
       <Ideology />
       <Thinkers />
-    </div>
+    </article>
     <Party />
   </section>
 </template>
@@ -39,6 +38,26 @@ export default class Analysis extends Vue {
 @import '@/styles/index.scss';
 
 section {
-  background-color: red;
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.title {
+  font-size: 27px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+article.container {
+  margin: 0 10px;
+  &.ideologycont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 </style>

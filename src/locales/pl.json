@@ -65,7 +65,11 @@
         "econ": "Ekonomia",
         "state": "Państwo",
         "society": "Społeczeństwo",
-        "law": "Prawo"
+        "law": "Prawo",
+        "compass": "Kompas Polityczny",
+        "ideology": "Najbliższa ideologia",
+        "thinkers": "Myśliciele ideologii",
+        "party": "Najbliższa partia"
       }
     }
   },

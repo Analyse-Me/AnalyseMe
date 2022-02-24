@@ -34,11 +34,11 @@ export default class App extends Vue {}
 
 *::-moz-selection {
   /* Code for Firefox */
-  background: $main !important;
+  background: $second !important;
 }
 
 *::selection {
-  background: $main !important;
+  background: $second !important;
 }
 
 html {

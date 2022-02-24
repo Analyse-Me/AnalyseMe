@@ -85,10 +85,10 @@ img {
     position: absolute;
     top: 0;
     left: 0;
-    border: 2.5px solid black;
+    border: 3px solid black;
     border-radius: 10px;
-    @media (min-width: 900px) {
-      border: 3.5px solid black;
+    @media (max-width: 900px) {
+      border-width: 2px;
     }
   }
   > div {
@@ -102,11 +102,15 @@ img {
     padding: 10px;
     &:first-child {
       border-radius: 7px 0 0 7px;
-      margin-right: 3px;
     }
     &:last-child {
       border-radius: 0 8px 8px 0;
       justify-content: flex-end;
+      flex-grow: 1;
+      border-left: 3px solid #262626;
+      @media (max-width: 900px) {
+        border-width: 2px;
+      }
     }
   }
 }

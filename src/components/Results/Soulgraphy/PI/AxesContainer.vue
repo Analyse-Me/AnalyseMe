@@ -54,7 +54,7 @@ export default class AxesContainer extends Vue {}
 <style lang="scss" scoped>
 @import '@/styles/index.scss';
 .collumn {
-  width: 570px;
+  width: 530px;
   max-width: 95vw;
 }
 section {
