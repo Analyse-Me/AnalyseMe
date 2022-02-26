@@ -40,6 +40,7 @@ export default class Analysis extends Vue {
 section {
   margin-top: 10px;
   width: 100%;
+  max-width: 1250px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
