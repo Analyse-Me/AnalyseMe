@@ -23,5 +23,5 @@ export default createI18n({
   locale: store.getters.getAppLanguage,
   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
   globalInjection: true,
-  messages: loadLocaleMessages(),
+  messages: loadLocaleMessages() as any,
 })

@@ -4,18 +4,17 @@
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
-    "importHelpers": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
     "sourceMap": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
     "types": [
-      "webpack-env",
-      "jest",
-      "cypress"
+      "webpack-env"
     ],
     "paths": {
       "@/*": [
@@ -35,7 +34,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/utilities/i18n.js"  ],
   "exclude": [
     "node_modules"
   ]

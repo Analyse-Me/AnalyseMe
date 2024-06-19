@@ -5,11 +5,9 @@ const eslintConfig = {
   },
   extends: [
     'plugin:vue/vue3-essential',
-    'plugin:prettier/recommended',
     'eslint:recommended',
     '@vue/typescript/recommended',
-    '@vue/prettier',
-    '@vue/prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
   ],
   parserOptions: {
     ecmaVersion: 2020,
@@ -18,9 +16,13 @@ const eslintConfig = {
     'no-console': 'warn',
     'no-debugger': 'warn',
     '@typescript-eslint/no-non-null-assertion': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
     'explicit-module-boundary-types': 'off',
-    'prettier/prettier': [1, { endOfLine: 'auto' }, { usePrettierrc: true }],
+    'vue/multi-word-component-names': 'off',
+    'prettier/prettier': [
+      'warn',
+      { endOfLine: 'auto' },
+      { usePrettierrc: true },
+    ],
   },
 }
 

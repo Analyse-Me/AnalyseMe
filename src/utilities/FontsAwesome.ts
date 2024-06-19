@@ -3,7 +3,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(fas)
-library.add(fab)
+library.add(fas as any)
+library.add(fab as any)
 
 export default FontAwesomeIcon

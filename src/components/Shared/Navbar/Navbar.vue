@@ -18,11 +18,11 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
 import { langs } from '@/data/locales'
-import Locale from './Locale.vue'
+// import Locale from './Locale.vue'
 
 @Options({
   components: {
-    Locale,
+    // Locale,
   },
 })
 export default class Navbar extends Vue {
