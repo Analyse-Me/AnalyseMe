@@ -12,6 +12,7 @@
     "useDefineForClassFields": true,
     "sourceMap": true,
     "experimentalDecorators": true,
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "types": [
       "webpack-env"
@@ -34,7 +35,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-, "src/utilities/i18n.js"  ],
+  ],
   "exclude": [
     "node_modules"
   ]

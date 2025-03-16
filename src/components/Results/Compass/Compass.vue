@@ -17,17 +17,16 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
+import { defineComponent } from 'vue'
 import { Result, _Compass } from '@/data/types/quizzes'
 
-@Options({
+export default defineComponent({
   computed: {
     results(): Result<_Compass> {
       return this.$store.getters.getResults
     },
   },
 })
-export default class Compass extends Vue {}
 </script>
 
 <style lang="scss" scoped>

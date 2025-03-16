@@ -1,7 +1,7 @@
 import { Module, VuexModule } from 'vuex-module-decorators'
 
 import Cookies from 'js-cookie'
-import jwtDecode, { JwtPayload } from 'jwt-decode'
+import { jwtDecode, JwtPayload } from 'jwt-decode'
 import { User } from '@/data/types/user'
 
 @Module({ name: 'auth' })

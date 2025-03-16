@@ -16,18 +16,18 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
+import { defineComponent } from 'vue'
 import { langs } from '@/data/locales'
-// import Locale from './Locale.vue'
+import Locale from './Locale.vue'
 
-@Options({
-  components: {
-    // Locale,
+export default defineComponent({
+  components: { Locale },
+  data() {
+    return {
+      langs,
+    }
   },
 })
-export default class Navbar extends Vue {
-  langs = langs
-}
 </script>
 
 <style lang="scss" scoped>

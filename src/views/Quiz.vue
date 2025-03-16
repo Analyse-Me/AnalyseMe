@@ -31,31 +31,33 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import Loading from '@/components/Shared/Loading.vue'
-import axios from '@/utilities/axios'
+import { defineComponent } from 'vue'
+import axios from '@/config/axios'
 import { quizzes } from '@/data/quizzes'
 import { QuizThumb, Question, QuizEffects } from '@/data/types/quizzes'
 import Results from '@/data/helpers/results'
+import Loading from '@/components/Shared/Loading.vue'
 
-@Options({
+export default defineComponent({
   components: {
     Loading,
   },
-})
-export default class QuizView extends Vue {
-  buttons = [
-    'strongly_agree',
-    'agree',
-    'idontknow',
-    'disagree',
-    'strongly_disagree',
-  ]
-  QuizData = {} as QuizThumb
+  data() {
+    return {
+      buttons: [
+        'strongly_agree',
+        'agree',
+        'idontknow',
+        'disagree',
+        'strongly_disagree',
+      ],
+      QuizData: {} as QuizThumb,
 
-  currentQuestion = 0
-  questions = [] as Question<QuizEffects>[]
-  anwsers = [] as QuizEffects[]
+      currentQuestion: 0,
+      questions: [] as Question<QuizEffects>[],
+      anwsers: [] as QuizEffects[],
+    }
+  },
 
   async mounted() {
     this.QuizData = quizzes.find((quiz) => quiz.ID == this.$route.params.id)!
@@ -72,38 +74,39 @@ export default class QuizView extends Vue {
     }
 
     document.title = `${this.QuizData.Title} | AnalyseMe`
-  }
+  },
+  methods: {
+    nextQuestion(strength: number) {
+      const effect = { ...this.questions[this.currentQuestion].effect }
+      for (const i in effect) {
+        effect[i] *= strength
+      }
 
-  nextQuestion(strength: number) {
-    const effect = { ...this.questions[this.currentQuestion].effect }
-    for (const i in effect) {
-      effect[i] *= strength
-    }
+      this.anwsers.push(effect)
+      if (this.currentQuestion == this.questions.length - 1) this.submit()
+      else this.currentQuestion++
+    },
 
-    this.anwsers.push(effect)
-    if (this.currentQuestion == this.questions.length - 1) this.submit()
-    else this.currentQuestion++
-  }
+    prevQuestion() {
+      if (this.currentQuestion != 0) {
+        this.currentQuestion--
+        this.anwsers.pop()
+      }
+    },
 
-  prevQuestion() {
-    if (this.currentQuestion != 0) {
-      this.currentQuestion--
-      this.anwsers.pop()
-    }
-  }
-
-  submit() {
-    const results = Results.calcRaw(this.anwsers, this.questions)
-    axios
-      .post(`/results/${this.$route.params.id}`, {
-        quiz: this.$route.params.id,
-        results,
-      })
-      .then((res) => {
-        this.$router.push(`/results/${res.data}`)
-      })
-  }
-}
+    submit() {
+      const results = Results.calcRaw(this.anwsers, this.questions)
+      axios
+        .post(`/results/${this.$route.params.id}`, {
+          quiz: this.$route.params.id,
+          results,
+        })
+        .then((res) => {
+          this.$router.push(`/results/${res.data}`)
+        })
+    },
+  },
+})
 </script>
 
 <style lang="scss" scoped>

@@ -25,30 +25,15 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import { Result, _Soulgraphy_PI } from '@/data/types/quizzes'
+import { defineComponent } from 'vue'
 import Axis from './Axis.vue'
 
-@Options({
+export default defineComponent({
   components: {
     Axis,
   },
-  computed: {
-    results(): Result<_Soulgraphy_PI> {
-      return this.$store.getters.getResults
-    },
-
-    res() {
-      return [
-        Object.keys(this.results.results).slice(0, 3),
-        Object.keys(this.results.results).slice(3, 7),
-        Object.keys(this.results.results).slice(7, 11),
-        Object.keys(this.results.results).slice(11, 14),
-      ].map((s) => s.map((v) => [v, this.results.results[v]]))
-    },
-  },
+  props: ['res'],
 })
-export default class AxesContainer extends Vue {}
 </script>
 
 <style lang="scss" scoped>

@@ -22,56 +22,57 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import { Prop } from 'vue-property-decorator'
+import { defineComponent } from 'vue'
 
-@Options({})
-export default class Axis extends Vue {
-  @Prop({ type: String, required: true })
-  readonly axis!: string
+export default defineComponent({
+  props: {
+    axis: String,
+    value: Number,
+  },
 
-  @Prop({ type: Number, required: true })
-  readonly value!: number
-
-  quiz_data = {
-    fed: {
-      prim: '#EFC200',
-      sec: '#C3272B',
-    },
-    dem: {
-      prim: '#00897B',
-      sec: '#FE8400',
-    },
-    glo: {
-      prim: '#4593BE',
-      sec: '#661973',
-    },
-    mil: {
-      prim: '#618834',
-      sec: '#B77994',
-    },
-    fre: {
-      prim: '#1C425E',
-      sec: '#EFC200',
-    },
-    equ: {
-      prim: '#C3272B',
-      sec: '#00897B',
-    },
-    pro: {
-      prim: '#661973',
-      sec: '#618834',
-    },
-    sec: {
-      prim: '#FE8400',
-      sec: '#00897B',
-    },
-    mul: {
-      prim: '#B77994',
-      sec: '#1C425E',
-    },
-  }
-}
+  data() {
+    return {
+      quiz_data: {
+        fed: {
+          prim: '#EFC200',
+          sec: '#C3272B',
+        },
+        dem: {
+          prim: '#00897B',
+          sec: '#FE8400',
+        },
+        glo: {
+          prim: '#4593BE',
+          sec: '#661973',
+        },
+        mil: {
+          prim: '#618834',
+          sec: '#B77994',
+        },
+        fre: {
+          prim: '#1C425E',
+          sec: '#EFC200',
+        },
+        equ: {
+          prim: '#C3272B',
+          sec: '#00897B',
+        },
+        pro: {
+          prim: '#661973',
+          sec: '#618834',
+        },
+        sec: {
+          prim: '#FE8400',
+          sec: '#00897B',
+        },
+        mul: {
+          prim: '#B77994',
+          sec: '#1C425E',
+        },
+      },
+    }
+  },
+})
 </script>
 
 <style lang="scss" scoped>

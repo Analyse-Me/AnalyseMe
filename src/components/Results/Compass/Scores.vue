@@ -11,23 +11,25 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
 import { Result, _Compass } from '@/data/types/quizzes'
+import { defineComponent } from 'vue'
 
-@Options({
+export default defineComponent({
+  data() {
+    return {
+      scores: {
+        ox: 'econ',
+        oy: 'govt',
+        oz: 'scty',
+      },
+    }
+  },
   computed: {
     results(): Result<_Compass> {
       return this.$store.getters.getResults
     },
   },
 })
-export default class Scores extends Vue {
-  scores = {
-    ox: 'econ',
-    oy: 'govt',
-    oz: 'scty',
-  }
-}
 </script>
 
 <style lang="scss" scoped>

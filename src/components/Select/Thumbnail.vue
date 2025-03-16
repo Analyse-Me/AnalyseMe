@@ -21,20 +21,18 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import { Prop } from 'vue-property-decorator'
+import { defineComponent } from 'vue'
 import Tag from './Tag.vue'
 import { QuizThumb } from '@/data/types/quizzes'
 
-@Options({
+export default defineComponent({
   components: {
     Tag,
   },
+  props: {
+    quiz: { type: Object as () => QuizThumb, required: true },
+  },
 })
-export default class Thumbnail extends Vue {
-  @Prop({ type: Object as () => QuizThumb, required: true })
-  readonly quiz!: QuizThumb
-}
 </script>
 
 <style lang="scss" scoped>

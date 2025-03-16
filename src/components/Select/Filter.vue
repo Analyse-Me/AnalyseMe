@@ -24,30 +24,29 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import { Watch } from 'vue-property-decorator'
+import { defineComponent } from 'vue'
 import { tags } from '@/data/quizzes'
 
-@Options({
-  emits: ['filtered-tags', 'filtered-search'],
-  // watch: {
-  //   emitSearch
-  // }
+export default defineComponent({
+  data() {
+    return {
+      tags: tags,
+      activeTag: '',
+      search: '',
+    }
+  },
+  emits: ['filtered-search', 'filtered-tags'],
+  watch: {
+    search() {
+      this.$emit('filtered-search', this.search)
+    },
+  },
+  methods: {
+    setActive(name: string) {
+      this.activeTag != name ? (this.activeTag = name) : (this.activeTag = '')
+    },
+  },
 })
-export default class Filter extends Vue {
-  tags = tags
-  activeTag = ''
-  search = ''
-
-  @Watch('search')
-  public emitSearch() {
-    this.$emit('filtered-search', this.search)
-  }
-
-  setActive(name: string) {
-    this.activeTag != name ? (this.activeTag = name) : (this.activeTag = '')
-  }
-}
 </script>
 
 <style lang="scss" scoped>

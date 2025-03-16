@@ -1,7 +1,7 @@
 {
   "nav": {
     "links": {
-      "quizzes": "Quizzes"
+      "quizzes": "Quizy"
     }
   },
   "select": {
@@ -210,7 +210,7 @@
     "9axes": {
       "1": "Nie ma potrzeby tworzenia rządu krajowego",
       "2": "Pododdziały narodów powinny mieć własne wojska",
-      "3": "Prawo państwowe powinno mieć pierwszeństwo przed przepisami krajowymi",
+      "3": "Prawo krajowe nie powinno istnieć",
       "4": "Prawo stanowe i lokalne powinno mieć pierwszeństwo przed prawem krajowym",
       "5": "Rząd krajowy nie może zrozumieć, czego ludzie potrzebują.",
       "6": "Ludzie powinni być bardziej lojalni wobec swojego lokalnego stanu niż swojego kraju.",
@@ -841,5 +841,8 @@
       "99": "Państwo powinno organizować budowę strategicznych obiektów",
       "100": "Od każdego według możliwości, każdemu według potrzeb"
     }
+  },
+  "ideologies": {
+    "libertarianizm": "Libertarianizm"
   }
 }

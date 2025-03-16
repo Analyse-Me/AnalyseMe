@@ -22,36 +22,35 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import { Prop } from 'vue-property-decorator'
-
-@Options({})
-export default class Axis extends Vue {
-  @Prop({ type: String, required: true })
-  readonly axis!: string
-
-  @Prop({ type: Number, required: true })
-  readonly value!: number
-
-  quiz_data = {
-    econ: {
-      prim: '#C3272B',
-      sec: '#00897B',
-    },
-    dipl: {
-      prim: '#4593BE',
-      sec: '#AE6800',
-    },
-    govt: {
-      prim: '#EFC200',
-      sec: '#1C425E',
-    },
-    scty: {
-      prim: '#661973',
-      sec: '#618834',
-    },
-  }
-}
+import { defineComponent } from 'vue'
+export default defineComponent({
+  props: {
+    axis: String,
+    value: Number,
+  },
+  data() {
+    return {
+      quiz_data: {
+        econ: {
+          prim: '#C3272B',
+          sec: '#00897B',
+        },
+        dipl: {
+          prim: '#4593BE',
+          sec: '#AE6800',
+        },
+        govt: {
+          prim: '#EFC200',
+          sec: '#1C425E',
+        },
+        scty: {
+          prim: '#661973',
+          sec: '#618834',
+        },
+      },
+    }
+  },
+})
 </script>
 
 <style lang="scss" scoped>

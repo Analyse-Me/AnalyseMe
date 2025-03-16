@@ -59,9 +59,9 @@ export const quizzes: QuizThumb[] = [
     ID: '9axes',
     Tags: [tags.Political, tags.Economic],
   },
-  {
-    Title: 'MyPolitics',
-    ID: 'mypolitics',
-    Tags: [tags.Political, tags.Economic],
-  },
+  // {
+  //   Title: 'MyPolitics',
+  //   ID: 'mypolitics',
+  //   Tags: [tags.Political, tags.Economic],
+  // },
 ]

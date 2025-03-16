@@ -4,12 +4,12 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
 import Compass from './Compass.vue'
 import Scores from './Scores.vue'
 import { Result, _Compass } from '@/data/types/quizzes'
+import { defineComponent } from 'vue'
 
-@Options({
+export default defineComponent({
   components: {
     Compass,
     Scores,
@@ -20,7 +20,6 @@ import { Result, _Compass } from '@/data/types/quizzes'
     },
   },
 })
-export default class Index extends Vue {}
 </script>
 
 <style lang="scss" scoped>

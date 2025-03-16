@@ -24,36 +24,43 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import { Prop } from 'vue-property-decorator'
+import { defineComponent } from 'vue'
 
-@Options({})
-export default class Locale extends Vue {
-  @Prop({ type: Array, required: true }) readonly options!: string[]
-  // @Prop({ type: Number, required: true, default: 0 }) readonly tabindex!: number
-
-  selected = this.options.length > 0 ? this.options[0] : null
-  filterOptions = this.options
-  open = false
-  key = 0
-
-  changeLanguage(lang: string) {
-    this.$i18n.locale = lang
-    this.$store.commit('setAppLanguage', lang)
-    const filter = this.options.filter((option) => option != this.$i18n.locale)
-    if (filter) this.filterOptions = filter
-    this.$forceUpdate
-  }
-
+export default defineComponent({
+  props: {
+    options: { type: Array, required: true },
+  },
+  data() {
+    return {
+      selected: this.options.length > 0 ? this.options[0] : null,
+      filterOptions: this.options,
+      open: false,
+      key: 0,
+    }
+  },
   mounted() {
-    this.selected =
-      this.options[
-        this.options.findIndex((locale) => locale == this.$i18n.locale)
-      ]
-    this.changeLanguage(this.$i18n.locale)
+    if (localStorage.getItem('language') == null) localStorage.language = 'en'
+    const selectedlocale = localStorage.language
+    const selected = this.options[
+      this.options.findIndex((locale) => locale == selectedlocale.slice(0, 2))
+    ] as string
+    this.selected = selected
+
+    this.changeLanguage(selected)
     this.$emit('input', this.selected)
-  }
-}
+  },
+  methods: {
+    changeLanguage(lang: string) {
+      this.$i18n.locale = lang
+      localStorage.setItem('language', lang)
+      const filter = this.options.filter(
+        (option) => option != this.$i18n.locale
+      )
+      if (filter) this.filterOptions = filter
+      this.$forceUpdate
+    },
+  },
+})
 </script>
 
 <style lang="scss" scoped>
@@ -78,9 +85,6 @@ export default class Locale extends Vue {
   cursor: pointer;
   user-select: none;
   display: flex;
-  img {
-    box-shadow: 0px 2px 3px #26262682;
-  }
 }
 
 .selected.open {

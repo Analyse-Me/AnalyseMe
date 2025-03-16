@@ -1,17 +1,17 @@
-<template>
-  <div>ss</div>
-</template>
+<template>sadad</template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import { Prop } from 'vue-property-decorator'
 import { Result, _Soulgraphy_PFA } from '@/data/types/quizzes'
+import { defineComponent } from 'vue'
 
-@Options({})
-export default class Index extends Vue {
-  @Prop({ type: Object as () => Result<_Soulgraphy_PFA>, required: true })
-  readonly results!: Result<_Soulgraphy_PFA>
-}
+export default defineComponent({
+  components: {},
+  computed: {
+    results(): Result<_Soulgraphy_PFA> {
+      return this.$store.getters.getResults
+    },
+  },
+})
 </script>
 
 <style lang="scss" scoped>

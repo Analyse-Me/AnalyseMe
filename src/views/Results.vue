@@ -7,14 +7,14 @@
     <SoulgraphyPI v-if="QuizData.ID == 'political_ideas'" />
     <SoulgraphyEFA v-if="QuizData.ID == 'economic_freedom_analysis'" />
     <SoulgraphyPFA v-if="QuizData.ID == 'personal_freedom_analysis'" />
-    <MyPolitics v-if="QuizData.ID == 'mypolitics'" />
+    <!-- <MyPolitics v-if="QuizData.ID == 'mypolitics'" /> -->
   </div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
+import { defineComponent } from 'vue'
 
-import axios from '@/utilities/axios'
+import axios from '@/config/axios'
 import { quizzes } from '@/data/quizzes'
 import { QuizThumb, Result, QuizEffects } from '@/data/types/quizzes'
 
@@ -24,9 +24,15 @@ import NineAxes from '@/components/Results/9Axes/Index.vue'
 import SoulgraphyPI from '@/components/Results/Soulgraphy/PI/Index.vue'
 import SoulgraphyEFA from '@/components/Results/Soulgraphy/EFA/Index.vue'
 import SoulgraphyPFA from '@/components/Results/Soulgraphy/PFA/Index.vue'
-import MyPolitics from '@/components/Results/MyPolitics/Index.vue'
+// import MyPolitics from '@/components/Results/MyPolitics/Index.vue'
 
-@Options({
+export default defineComponent({
+  data() {
+    return {
+      QuizData: {} as QuizThumb,
+    }
+  },
+
   components: {
     Compass,
     EightValues,
@@ -34,11 +40,8 @@ import MyPolitics from '@/components/Results/MyPolitics/Index.vue'
     SoulgraphyPI,
     SoulgraphyEFA,
     SoulgraphyPFA,
-    MyPolitics,
+    // MyPolitics,
   },
-})
-export default class Results extends Vue {
-  QuizData = {} as QuizThumb
 
   mounted() {
     axios
@@ -61,8 +64,8 @@ export default class Results extends Vue {
           this.$router.push('/quizzes')
         }
       })
-  }
-}
+  },
+})
 </script>
 
 <style lang="scss" scoped>

@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
+import { defineComponent } from 'vue'
 
 import Compass from './Compass.vue'
 import Ideology from './Ideology.vue'
@@ -19,19 +19,19 @@ import Party from './Party.vue'
 
 import { Result, _Soulgraphy_PI } from '@/data/types/quizzes'
 
-@Options({
+export default defineComponent({
   components: {
     Compass,
     Ideology,
     Thinkers,
     Party,
   },
+  computed: {
+    results(): Result<_Soulgraphy_PI> {
+      return this.$store.getters.getResults
+    },
+  },
 })
-export default class Analysis extends Vue {
-  get results(): Result<_Soulgraphy_PI> {
-    return this.$store.getters.getResults
-  }
-}
 </script>
 
 <style lang="scss" scoped>

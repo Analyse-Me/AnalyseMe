@@ -10,19 +10,23 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import axios from '@/utilities/axios'
+import { defineComponent } from 'vue'
+import axios from '@/config/axios'
 import { Ideology, Result, _Soulgraphy_PI } from '@/data/types/quizzes'
-// import { Prop } from 'vue-property-decorator'
 
-@Options({})
-export default class Ideologies extends Vue {
-  get results(): Result<_Soulgraphy_PI> {
-    return this.$store.getters.getResults
-  }
-  ideologies: Ideology<_Soulgraphy_PI>[] = []
-  ideology = ''
+export default defineComponent({
+  data() {
+    return {
+      ideologies: [] as Ideology<_Soulgraphy_PI>[],
+      ideology: '',
+    }
+  },
 
+  computed: {
+    results(): Result<_Soulgraphy_PI> {
+      return this.$store.getters.getResults
+    },
+  },
   async mounted() {
     const res = await axios.get<Ideology<_Soulgraphy_PI>[]>(
       `/ideologies/${this.results.quizID}`
@@ -46,8 +50,8 @@ export default class Ideologies extends Vue {
     }
 
     this.ideology = Ideology!.name
-  }
-}
+  },
+})
 </script>
 
 <style lang="scss" scoped>

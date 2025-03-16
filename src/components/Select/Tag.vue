@@ -7,15 +7,14 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import { Prop } from 'vue-property-decorator'
+import { defineComponent } from 'vue'
 import { QuizTag } from '@/data/types/quizzes'
 
-@Options({})
-export default class Tag extends Vue {
-  @Prop({ type: Object as () => QuizTag, required: true })
-  readonly tag!: QuizTag
-}
+export default defineComponent({
+  props: {
+    tag: { type: Object as () => QuizTag, required: true },
+  },
+})
 </script>
 
 <style lang="scss" scoped>

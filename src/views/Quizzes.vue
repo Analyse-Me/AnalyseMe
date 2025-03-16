@@ -6,48 +6,53 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
+import { defineComponent } from 'vue'
+
 import Thumbnail from '@/components/Select/Thumbnail.vue'
 import Filter from '@/components/Select/Filter.vue'
 import { quizzes } from '@/data/quizzes'
 import { QuizTag } from '@/data/types/quizzes'
 
-@Options({
+export default defineComponent({
   components: {
     Thumbnail,
     Filter,
   },
-})
-export default class Quizzes extends Vue {
-  allQuizzes = quizzes
-  quizzes = this.allQuizzes
-  activeTag = ''
-  activeSearch = ''
+  data() {
+    return {
+      allQuizzes: quizzes,
+      quizzes: quizzes,
+      activeTag: '',
+      activeSearch: '',
+    }
+  },
 
-  filterTags(filtertag: string) {
-    this.activeTag = filtertag
-    this.filterQuizzes()
-  }
+  methods: {
+    filterTags(filtertag: string) {
+      this.activeTag = filtertag
+      this.filterQuizzes()
+    },
 
-  searchQuiz(text: string) {
-    this.activeSearch = text
-    this.filterQuizzes()
-  }
+    searchQuiz(text: string) {
+      this.activeSearch = text
+      this.filterQuizzes()
+    },
 
-  filterQuizzes() {
-    this.quizzes = this.allQuizzes.filter(
-      (quiz) =>
-        quiz.Title.toLowerCase().includes(this.activeSearch.toLowerCase()) &&
-        (this.activeTag
-          ? quiz.Tags.some((tag: QuizTag) => tag.Name == this.activeTag)
-          : 1 == 1)
-    )
-  }
+    filterQuizzes() {
+      this.quizzes = quizzes.filter(
+        (quiz) =>
+          quiz.Title.toLowerCase().includes(this.activeSearch.toLowerCase()) &&
+          (this.activeTag
+            ? quiz.Tags.some((tag: QuizTag) => tag.Name == this.activeTag)
+            : 1 == 1)
+      )
+    },
+  },
 
   mounted() {
     document.title = `${this.$t('nav.links.quizzes')} | AnalyseMe`
-  }
-}
+  },
+})
 </script>
 
 <style lang="scss" scoped>

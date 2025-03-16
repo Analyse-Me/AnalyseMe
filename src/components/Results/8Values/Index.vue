@@ -5,16 +5,19 @@
     :axis="index"
     :value="value"
   />
+  <Ideology />
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
+import { defineComponent } from 'vue'
 import Axis from './Axis.vue'
+import Ideology from './Ideology.vue'
 import { Result, _8Values } from '@/data/types/quizzes'
 
-@Options({
+export default defineComponent({
   components: {
     Axis,
+    Ideology,
   },
   computed: {
     results(): Result<_8Values> {
@@ -22,7 +25,6 @@ import { Result, _8Values } from '@/data/types/quizzes'
     },
   },
 })
-export default class Index extends Vue {}
 </script>
 
 <style lang="scss" scoped>

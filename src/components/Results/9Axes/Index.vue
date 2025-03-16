@@ -8,11 +8,11 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
 import Axis from './Axis.vue'
 import { Result, _9Axes } from '@/data/types/quizzes'
+import { defineComponent } from 'vue'
 
-@Options({
+export default defineComponent({
   components: {
     Axis,
   },
@@ -22,7 +22,6 @@ import { Result, _9Axes } from '@/data/types/quizzes'
     },
   },
 })
-export default class Index extends Vue {}
 </script>
 
 <style lang="scss" scoped>
